@@ -1,5 +1,10 @@
 node_modules
+
+# environments
 .env
-.imgdesc-cache
-output.txt
-descriptions.json
+
+# update files
+v2-updates.txt
+
+# example files
+example.jpg

@@ -1,21 +1,20 @@
 {
   "name": "imgdesc",
   "version": "1.0.0",
-  "description": "A free and open-source CLI tool that generates AI-powered image descriptions using local BLIP models — no API keys, no costs, just plug-and-play intelligence.",
+  "description": "AI-powered CLI for customizable image descriptions using Google's Gemini multimodal models.",
   "type": "module",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "bin": {
     "imgdesc": "./bin/index.js"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "node ./bin/index.js ./example.jpg -o output.txt",
+    "dev": "node ./bin/index.js ./example.jpg -o output.json",
     "test": "echo \"No tests specified yet\" && exit 0"
   },
   "author": "Naseem Ansari",
   "license": "MIT",
   "dependencies": {
-    "@xenova/transformers": "^2.7.0",
+    "@google/generative-ai": "^0.21.0",
     "chalk": "^5.3.0",
     "commander": "^12.0.0"
   },
@@ -25,13 +24,12 @@
     "image-captioning",
     "image-to-text",
     "transformers",
-    "blip",
-    "blip2",
-    "huggingface",
+    "gemini",
+    "google-ai",
     "open-source",
     "nodejs-cli",
     "ai-tools",
-    "local-ai",
+    "multimodal-ai",
     "computer-vision",
     "naseem-ansari"
   ],
