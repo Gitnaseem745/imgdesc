@@ -1,4 +1,4 @@
-# ⚙️ imgdesc: Bulk Image Metadata CLI
+# 🌇 imgdesc
 
 <div align="center">
 
@@ -8,7 +8,7 @@
 
 </div>
 
-> **CLI tool for generating image metadata in bulk — powered by Gemini Vision (ViT2), with planned upgrade to BLIP for smarter, more context-aware descriptions.**
+> **CLI tool for generating image metadata in bulk — powered by Gemini for smarter, more context-aware descriptions.**
 
 ---
 
