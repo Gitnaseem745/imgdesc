@@ -21,9 +21,10 @@
 ## ✨ Features
 
 - ✅ **Bulk Processing**: Point to a folder and caption everything in one run.
+- ⚡ **Concurrent Batch Processing**: Process 10 images simultaneously with intelligent rate limiting (v1.1.0+).
 - 🧠 **Rich Metadata Output**: Generates description, alt text, tags, category, and a smart rename slug.
 - 🔄 **Instruction Prompting**: Tailor tone for SEO, accessibility, storytelling, datasets, product catalogs, etc.
-- ⚡ **Fast Models**: Optimized for Gemini Flash with optional upgrade to Pro for higher fidelity.
+- 🚀 **Fast Models**: Optimized for Gemini Flash with optional upgrade to Pro for higher fidelity.
 - 🧪 **Model Roadmap**: Planned support for BLIP / local vision models for offline or hybrid workflows.
 - 🛠️ **Flexible Output**: Stream JSON to stdout or write structured JSON files.
 - 🌐 **Multi-Use Cases**: eCommerce, blogs, accessibility remediation, dataset labeling, CMS ingestion.
@@ -31,17 +32,20 @@
 - 🧩 **Composable**: Pipe results into other tools for renaming, indexing, or uploading.
 - 🔐 **Secure Key Handling**: Reads from flags or environment variables—no hardcoding required.
 - 🧷 **Idempotent Runs**: Safe to re-run; simply overwrite or diff outputs.
-- 📝 **Readable CLI Output**: Clear progress logs; verbose mode for debugging.
+- � **Progress Tracking**: Real-time batch-level progress indicators with detailed logging (v1.1.0+).
+- �📝 **Readable CLI Output**: Clear progress logs; verbose mode for debugging.
 
 ---
 
 ## 🧠 How It Works
 
 1. Resolves your input path and collects every supported image file.
-2. Batches each image into a multimodal Gemini request using your chosen model.
-3. Applies your instruction prompt to guide captions, alt text, metadata formatting, and a suggested filename slug.
-4. Returns the AI-enriched record (including rename suggestion) to the terminal and optionally writes it to the destination file.
-5. Supports multi-image processing so full folders can be captioned in a single run.
+2. Processes images in concurrent batches (10 images per batch) to optimize performance while respecting API rate limits.
+3. Applies intelligent rate limiting with 2-second delays between batches to prevent API throttling.
+4. Batches each image into a multimodal Gemini request using your chosen model.
+5. Applies your instruction prompt to guide captions, alt text, metadata formatting, and a suggested filename slug.
+6. Returns the AI-enriched record (including rename suggestion) to the terminal and optionally writes it to the destination file.
+7. Supports multi-image processing so full folders can be captioned in a single run with progress tracking.
 
 ---
 
@@ -90,7 +94,7 @@ imgdesc <input> [--api-key <key>] [--model <model>] [--instruction <text>] [--ou
 | Flag | Type | Default | Description | Example |
 | --- | --- | --- | --- | --- |
 | `--api-key, -k` | string | none | Gemini API key. Falls back to `GEMINI_API_KEY`/`GOOGLE_API_KEY`. | `-k $GEMINI_API_KEY` |
-| `--model, -m` | string | `gemini-2.5-flash` | Gemini multimodal model to target. Supported models:
+| `--model, -m` | string | `gemini-2.0-flash-lite` | Gemini multimodal model to target. Supported models:
 	- `gemini-2.5-pro`
 	- `gemini-2.5-flash`
 	- `gemini-2.5-flash-preview`
@@ -98,7 +102,7 @@ imgdesc <input> [--api-key <key>] [--model <model>] [--instruction <text>] [--ou
 	- `gemini-2.5-flash-lite-preview`
 	- `gemini-2.0-flash`
 	- `gemini-2.0-flash-lite`
-| Example: `--model gemini-2.5-flash` |
+| Example: `--model gemini-2.0-flash-lite` |
 | `--instruction, -i` | string | Instructional default prompt | Customizes output tone, length, or format. | `-i "Write a playful Instagram caption"` |
 | `--output, -o` | string | `descriptions.json` | File to save generated content; skipped when omitted. | `-o captions.json` |
 | `--input` (positional) | path | required | Image file or directory to process. Supports JPG, PNG, WebP, GIF, BMP. | `imgdesc ./photos` |
